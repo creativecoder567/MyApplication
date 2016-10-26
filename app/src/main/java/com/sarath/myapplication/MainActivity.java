@@ -1,61 +1,78 @@
 package com.sarath.myapplication;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Handler;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.NotificationCompat;
+import android.support.v7.widget.PopupMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Switch;
+
+import static android.R.id.message;
 
 public class MainActivity extends AppCompatActivity {
-    int SPLASH_TIME_OUT =10000;
     Button button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        button =(Button)findViewById(R.id.btnLaunchMap);
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startActivity(new Intent(MainActivity.this,Welcome.class));
-
-            }
-        },SPLASH_TIME_OUT);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
 
     }
 
     public void process(View view) {
-        Intent intent =null,chooser=null;
-        switch (view.getId()){
+      Intent   chooser = null;
+        switch (view.getId()) {
 
             case R.id.btnLaunchMap:
-                intent = new Intent(Intent.ACTION_VIEW );
-                intent.setData(Uri.parse("geo:20.40,50.70"));
-                chooser =Intent.createChooser(intent,"Launch Maps");
-                startActivity(intent);
+
+               Intent intentMap = new Intent(Intent.ACTION_VIEW);
+                intentMap.setData(Uri.parse("geo:20.40,50.70"));
+                chooser = Intent.createChooser(intentMap, "Launch Maps");
+                startActivity(intentMap);
                 break;
             case R.id.btnMarket:
-                intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("market://details?id=dolphin.developers.com"));
-                chooser =Intent.createChooser(intent,"Launch Market");
-                startActivity(chooser);
+               Intent intentMarket = new Intent(Intent.ACTION_VIEW);
+                intentMarket.setData(Uri.parse("market://details?id=com.whatsapp&hl=en"));
+               // chooser = Intent.createChooser(intent, "Launch Market");
+                startActivity(intentMarket);
+                break;
             case R.id.btnMail:
-                intent = new Intent(Intent.ACTION_SEND);
-                intent.setData(Uri.parse("mailto"));
-                String[] to = {"kumarnsarath7@gmail.com"};
-                intent.putExtra(Intent.EXTRA_EMAIL,to);
-                intent.putExtra(Intent.EXTRA_SUBJECT, "hi");
-                intent.putExtra(Intent.EXTRA_TEXT,"This is my first mail");
-                startActivity(intent);
+                Intent email = new Intent(Intent.ACTION_SEND);
+                String to="kumarnsarath7@gmail.com";
+                email.putExtra(Intent.EXTRA_EMAIL, new String[]{to});
+                String subject="hi";
+                email.putExtra(Intent.EXTRA_SUBJECT, subject);
+                String messa="hi";
+                email.putExtra(Intent.EXTRA_TEXT, messa);
+                email.setType("message/rfc822");
+                startActivity(Intent.createChooser(email, "Choose an Email client :"));
+                break;
+            case R.id.btnNotification:
+                Intent intentNotification = new Intent(getBaseContext(),Notification.class);
+                startActivity(intentNotification);
+                break;
+            case R.id.changeBakground:
+              Intent  intentBC = new Intent(this, com.sarath.myapplication.PopMenu.class);
+                startActivity(intentBC);
+                break;
+            }
+
 
         }
     }
-}
+
+

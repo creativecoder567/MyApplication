@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -7,10 +7,10 @@
     android:orientation="vertical"
     tools:context="com.sarath.myapplication.MainActivity">
 
-    <ImageView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/welcome"/>
+        android:layout_height="wrap_content">
     <Button
         android:onClick="process"
         android:text="Maps"
@@ -29,5 +29,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Send Mail"
+        android:background="#ea0b0b"
         android:id="@+id/btnMail"/>
-</LinearLayout>
+
+    <Button
+        android:onClick="process"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ShowNotification"
+        android:background="#40e10f"
+        android:id="@+id/btnNotification"/>
+    <Button
+        android:onClick="popup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="changeBakground"
+        android:id="@+id/changeBakground"/>
+    </LinearLayout>
+</ScrollView>
