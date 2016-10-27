@@ -7,8 +7,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -22,47 +24,62 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 public class PopMenu extends AppCompatActivity {
 
-    Button button;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
+    Button btnpopmenu;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        button = (Button) findViewById(R.id.changeBakground);
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+        btnpopmenu = (Button)findViewById(R.id.changeBakground);
     }
-
-    public void popup(View view) {
-        PopupMenu pm = new PopupMenu(getBaseContext(), view);
-        MenuInflater inflater = pm.getMenuInflater();
-        inflater.inflate(R.menu.popup_menu, pm.getMenu());
-        pm.show();
-
-        switch (view.getId()) {
-            case R.id.pBlue:
-                button.setBackgroundColor(Color.BLUE);
-                break;
-            case R.id.pGreen:
-                button.setBackgroundColor(Color.GREEN);
-                break;
-            case R.id.pred:
-                button.setBackgroundColor(Color.RED);
-                break;
-            case R.id.pCyan:
-                button.setBackgroundColor(Color.CYAN);
-                break;
-            case R.id.pYellow:
-                button.setBackgroundColor(Color.YELLOW);
-                break;
-        }
-    }
-
-
 }
+    /*@Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        button = (Button) findViewById(R.id.changeBakground);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popup = new PopupMenu(PopMenu.this, button);
+                //Inflating the Popup using xml file
+                popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    public boolean onMenuItemClick(MenuItem item) {
+                        Toast.makeText(PopMenu.this, "You Clicked : " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                        return true;
+
+                    }
+                });
+
+            }
+        });
+    }
+}
+*/
+           /* public void popup(View view) {
+                PopupMenu pm = new PopupMenu(getBaseContext(), view);
+                MenuInflater inflater = pm.getMenuInflater();
+                inflater.inflate(R.menu.popup_menu, pm.getMenu());
+                pm.show();
+
+                switch (view.getId()) {
+                    case R.id.pBlue:
+                        button.setBackgroundColor(Color.BLUE);
+                        break;
+                    case R.id.pGreen:
+                        button.setBackgroundColor(Color.GREEN);
+                        break;
+                    case R.id.pred:
+                        button.setBackgroundColor(Color.RED);
+                        break;
+                    case R.id.pCyan:
+                        button.setBackgroundColor(Color.CYAN);
+                        break;
+                    case R.id.pYellow:
+                        button.setBackgroundColor(Color.YELLOW);
+                        break;
+                }
+            }
+*/
+

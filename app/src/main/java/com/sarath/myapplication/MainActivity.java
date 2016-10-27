@@ -15,22 +15,31 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.PopupMenu;
+import android.text.Layout;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.Switch;
 
 import static android.R.id.message;
 
 public class MainActivity extends AppCompatActivity {
-    Button button;
-
+    Button button,changeBakground;
+    ScrollView activity_main;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        activity_main = (ScrollView)findViewById(R.id.activity_main);
+        changeBakground =(Button)findViewById(R.id.changeBakground);
+        /*changeBakground.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeBakground.setBackgroundColor(Color.YELLOW);
+            }
+        });*/
     }
 
     public void process(View view) {
@@ -38,8 +47,7 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()) {
 
             case R.id.btnLaunchMap:
-
-               Intent intentMap = new Intent(Intent.ACTION_VIEW);
+                Intent intentMap = new Intent(Intent.ACTION_VIEW);
                 intentMap.setData(Uri.parse("geo:20.40,50.70"));
                 chooser = Intent.createChooser(intentMap, "Launch Maps");
                 startActivity(intentMap);
@@ -61,14 +69,14 @@ public class MainActivity extends AppCompatActivity {
                 email.setType("message/rfc822");
                 startActivity(Intent.createChooser(email, "Choose an Email client :"));
                 break;
-            case R.id.btnNotification:
+            /*case R.id.btnNotification:
                 Intent intentNotification = new Intent(getBaseContext(),Notification.class);
                 startActivity(intentNotification);
                 break;
             case R.id.changeBakground:
-              Intent  intentBC = new Intent(this, com.sarath.myapplication.PopMenu.class);
+              Intent  intentBC = new Intent(getBaseContext(), com.sarath.myapplication.PopMenu.class);
                 startActivity(intentBC);
-                break;
+                break;*/
             }
 
 

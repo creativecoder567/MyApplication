@@ -11,18 +11,20 @@
         <activity android:name=".Welcome">
 
         </activity>
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".Notification"/>
-        <activity android:name=".InstagramActivity">
+        <activity android:name=".MainActivity">
+
+    </activity>
+        <activity android:name=".Notification">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
         </activity>
-        <activity android:name=".PopMenu"/><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
-     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
-        <meta-data
+        <!--<activity android:name=".InstagramActivity">
+        </activity>
+        <activity android:name=".PopMenu"/>
+        --><meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
     </application>

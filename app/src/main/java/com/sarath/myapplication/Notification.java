@@ -5,6 +5,8 @@ import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -19,49 +21,30 @@ import android.widget.Button;
  */
 
 public class Notification extends AppCompatActivity{
-    Button button1;
 
+      NotificationCompat.Builder notification;
+    private static final int uniqueid=45612;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        button1 =(Button) findViewById(R.id.btnNotification);
-        button1.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-            @Override
-            public void onClick(View view) {
-             createNotification();
-            }
-        });
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    public void createNotification(){
-
-        NotificationCompat.Builder mBuilder =
-                (NotificationCompat.Builder) new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.notification)
-                        .setContentTitle("My notification")
-                        .setContentText("Hello World!");
-// Creates an explicit intent for an Activity in your app
-        Intent resultIntent = new Intent(this, MainActivity.class);
-
-// The stack builder object will contain an artificial back stack for the
-// started Activity.
-// This ensures that navigating backward from the Activity leads out of
-// your application to the Home screen.
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-// Adds the back stack for the Intent (but not the Intent itself)
-        stackBuilder.addParentStack(MainActivity.class);
-// Adds the Intent that starts the Activity to the top of the stack
-        stackBuilder.addNextIntent(resultIntent);
-        PendingIntent resultPendingIntent =
-                stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-        mBuilder.setContentIntent(resultPendingIntent);
-        NotificationManager mNotificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-// mId allows you to update the notification later on.
-        mNotificationManager.notify(1, mBuilder.build());
+        notification = new NotificationCompat.Builder(this);
 
     }
+   public  void createNotification(View view){
+       Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+       notification.setSound(Uri.parse("android.resource://" + view.getContext().getPackageName() + "/" + R.raw.solemn));
+       notification.setSmallIcon(R.drawable.notification);
+       notification.setTicker("This is the Ticker");
+       notification.setWhen(System.currentTimeMillis());
+       notification.setContentTitle("Title");
+       notification.setContentText(" notification created");
+       Intent intent = new Intent(this,MainActivity.class);
+       PendingIntent pendingIntent =PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+       notification.setContentIntent(pendingIntent);
+
+       NotificationManager notificationManager =(NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+       notificationManager.notify(uniqueid,notification.build());
+   }
+
 }

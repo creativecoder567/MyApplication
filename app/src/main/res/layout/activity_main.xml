@@ -33,14 +33,14 @@
         android:id="@+id/btnMail"/>
 
     <Button
-        android:onClick="process"
+        android:onClick="createNotification"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ShowNotification"
         android:background="#40e10f"
         android:id="@+id/btnNotification"/>
     <Button
-        android:onClick="popup"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="changeBakground"
