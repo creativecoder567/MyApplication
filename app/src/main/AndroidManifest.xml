@@ -10,21 +10,25 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Welcome">
 
+
         </activity>
         <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
 
-    </activity>
+            </intent-filter>
+                </activity>
+
         <activity android:name=".Notification">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
+                    </activity>
+
         <!--<activity android:name=".InstagramActivity">
+        </activity>-->
+        <activity android:name=".PopMenu">
         </activity>
-        <activity android:name=".PopMenu"/>
-        --><meta-data
+        <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
     </application>

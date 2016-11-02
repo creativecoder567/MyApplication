@@ -22,6 +22,7 @@
         android:onClick="process"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:text="Market"
         android:id="@+id/btnMarket"/>
     <Button
@@ -31,7 +32,11 @@
         android:text="Send Mail"
         android:background="#ea0b0b"
         android:id="@+id/btnMail"/>
-
+        <ToggleButton
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:text="ToggleButton"
+         android:id="@+id/btnToggle"/>
     <Button
         android:onClick="createNotification"
         android:layout_width="match_parent"
@@ -40,10 +45,18 @@
         android:background="#40e10f"
         android:id="@+id/btnNotification"/>
     <Button
-
+        android:onClick="popup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="changeBakground"
-        android:id="@+id/changeBakground"/>
+        android:id="@+id/btnchangeBakground"/>
+    <Button
+        android:onClick="process"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SendImage"
+        android:id="@+id/btnSend"/>
+
+
     </LinearLayout>
 </ScrollView>

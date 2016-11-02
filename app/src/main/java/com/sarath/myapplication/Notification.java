@@ -30,6 +30,7 @@ public class Notification extends AppCompatActivity{
         setContentView(R.layout.activity_main);
         notification = new NotificationCompat.Builder(this);
 
+
     }
    public  void createNotification(View view){
        Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);

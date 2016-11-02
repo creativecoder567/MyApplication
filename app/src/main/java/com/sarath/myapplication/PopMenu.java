@@ -24,39 +24,33 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 public class PopMenu extends AppCompatActivity {
 
-    Button btnpopmenu;
+    Button changeBakground;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnpopmenu = (Button)findViewById(R.id.changeBakground);
-    }
-}
-    /*@Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        button = (Button) findViewById(R.id.changeBakground);
-        button.setOnClickListener(new View.OnClickListener() {
+        changeBakground = (Button) findViewById(R.id.btnchangeBakground);
+        changeBakground.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PopupMenu popup = new PopupMenu(PopMenu.this, button);
-                //Inflating the Popup using xml file
+                PopupMenu popup = new PopupMenu(PopMenu.this, changeBakground);
                 popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
                         Toast.makeText(PopMenu.this, "You Clicked : " + item.getTitle(), Toast.LENGTH_SHORT).show();
+
                         return true;
 
                     }
                 });
-
+                popup.show();
             }
         });
     }
 }
-*/
+
+
            /* public void popup(View view) {
                 PopupMenu pm = new PopupMenu(getBaseContext(), view);
                 MenuInflater inflater = pm.getMenuInflater();
